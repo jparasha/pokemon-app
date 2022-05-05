@@ -1,0 +1,37 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.details .detailsCard {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--secondary-bg-color);
+  border-radius: 32px;
+  padding: 20px;
+  min-height: 85vh;
+  min-width: 90vw;
+}
+
+.details .detailsCard .detailsImageContainer {
+  max-width: 50%;
+}
+
+.details .detailsCard .detailsImageContainer img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.details .detailsCard .detailsInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 50%;
+}

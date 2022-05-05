@@ -1,3 +1,4 @@
+import { useSearchParams, Link } from "react-router-dom";
 import style from "./style.module.css";
 
 export default function Card(props) {
@@ -22,9 +23,9 @@ export default function Card(props) {
           {pokemon.name}, {pokemon.weight}kg
         </h3>
         <p className={style.height}>{pokemon.height} mtrs.</p>
-        <button type='button' className={style.cta}>
+        <Link to={`/details?id=${pokemon.id}`} className={style.cta}>
           Know More
-        </button>
+        </Link>
       </div>
     </div>
   );
