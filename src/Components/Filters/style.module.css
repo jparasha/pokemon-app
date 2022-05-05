@@ -1,0 +1,93 @@
+.filters {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  min-width: 95vw;
+  align-items: center;
+  /* background-color: var(--secondary-bg-color); */
+  border-radius: 32px;
+}
+
+.filters__navigationButtons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  /* width: 25%; */
+  gap: 5px;
+}
+
+.filters__navigationButtons button,
+.filters__searchForm .filters__searchForm__submit {
+  background-color: var(--font-color);
+  border-radius: 32px;
+  color: var(--secondary-bg-color);
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  margin: 0.8rem;
+  /* width: 150px; */
+  border: 1px solid var(--secondary-bg-color);
+  cursor: pointer;
+}
+
+.filters__navigationButtons button:hover {
+  background-color: var(--secondary-bg-color);
+  color: var(--font-color);
+  border-color: var(--font-color);
+}
+
+.filters__navigationButtons button:disabled {
+  background-color: var(--secondary-font-color);
+  color: var(--font-color);
+  border-color: var(--font-color);
+  cursor: not-allowed;
+}
+
+.filters__searchForm {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  /* width: 20%; */
+  gap: 5px;
+}
+
+.filters__searchForm .filters__searchForm__input {
+  /* width: 100%; */
+  border-radius: 32px;
+  border: 1px solid var(--font-color);
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--font-color);
+  background-color: var(--secondary-bg-color);
+  outline: none;
+  transition: all 0.3s;
+}
+
+.filters__limitDropDown,
+.filters__sortByDropDown {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: center;
+  /* width: 15%; */
+  padding: 20px;
+}
+
+.filters__limitDropDown__select,
+.filters__sortByDropDown__select {
+  background-color: var(--font-color);
+  border-radius: 12px;
+  color: var(--secondary-bg-color);
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  margin: 0.8rem;
+  min-width: 100px;
+  border: 1px solid var(--secondary-bg-color);
+  cursor: pointer;
+}
