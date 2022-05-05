@@ -7,6 +7,7 @@
 }
 
 .details .detailsCard {
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -33,5 +34,49 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  text-align: left;
   max-width: 50%;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.details .detailsCard .backButton {
+  position: absolute;
+  top: 50;
+  left: 10px;
+  text-decoration: none;
+}
+
+.details .detailsCard .backButton .arrow {
+  width: 5px;
+  height: 0;
+  margin: 10px;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-right: 30px solid rgb(231, 224, 224);
+}
+.details .detailsCard .backButton .arrow:hover {
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-right: 30px solid rgba(221, 219, 219, 0.582);
+}
+
+@media screen and (max-width: 1024px) {
+  .details .detailsCard {
+    flex-direction: column;
+    min-width: 80vw;
+  }
+
+  .details .detailsCard .detailsImageContainer {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .details .detailsCard .detailsInfo {
+    max-width: 100%;
+  }
+
+  .details .detailsCard .backButton {
+    top: 10px;
+  }
 }

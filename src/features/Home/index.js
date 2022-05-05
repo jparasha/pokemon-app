@@ -123,7 +123,7 @@ export default function Home() {
             <Card key={pokemon.name} pokemon={pokemon} />
           ))
         ) : (
-          <NoMatch />
+          <NoMatch isLoading={isLoading} />
         )}
       </section>
 

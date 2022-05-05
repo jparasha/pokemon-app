@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import { fetchPokemon } from "../../utils/API";
 import { Loader, NoMatch } from "../../Components";
 import style from "./details.module.css";
 
 const URL = "https://pokeapi.co/api/v2/pokemon";
 export default function Details() {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const pageParams = {
     id: searchParams.get("id") || 1,
@@ -32,7 +33,6 @@ export default function Details() {
     const url = `${URL}/${pageParams.id}`;
     !pokemonDetails && getData(url);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  console.log(pokemonDetails, "pokemonDetails");
 
   return (
     <div className={style.details}>
@@ -50,22 +50,27 @@ export default function Details() {
           </div>
           <div className={style.detailsInfo}>
             <h1 className={style.detailsName}>{pokemonDetails.name}</h1>
-            <p>Height :{pokemonDetails.height}</p>
-            <p>Weight :{pokemonDetails.weight}</p>
-            <p>Type :{pokemonDetails.types.map((type) => type.type.name)}</p>
+            <p>Height : {pokemonDetails.height}</p>
+            <p>Weight : {pokemonDetails.weight}</p>
+            <p>Type : {pokemonDetails.types.map((type) => type.type.name)}</p>
             <p>
-              Abilities :
-              {pokemonDetails.abilities.map((ability) => ability.ability.name)}
+              Abilities :&nbsp;
+              {pokemonDetails.abilities
+                .map((ability) => ability.ability.name)
+                .join(", ")}
             </p>
-            <p>Stats :{pokemonDetails.stats.map((stat) => stat.stat.name)}</p>
             <p>
-              Egg Groups :{pokemonDetails.egg_groups?.map((egg) => egg.name)}
+              Stats :&nbsp;
+              {pokemonDetails.stats.map((stat) => stat.stat.name).join(", ")}
             </p>
-            <p>Evolution :{pokemonDetails.evolution_chain?.url}</p>
           </div>
+          {/* Back Button */}
+          <Link to={"/"} className={style.backButton}>
+            <div className={style.arrow} title='back'></div>
+          </Link>
         </div>
       ) : (
-        <NoMatch />
+        <NoMatch isLoading={isLoading} />
       )}
 
       {/* LoaderComponent */}
