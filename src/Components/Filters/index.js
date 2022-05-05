@@ -19,7 +19,7 @@ export default function Filters(props) {
           className={style.filters__navigationButtons__button}
           disabled={!pokemonList.previous}
           onClick={handleBackNavigation}>
-          {"< Previous"}
+          {"< Prev"}
         </button>
         <button
           type='button'

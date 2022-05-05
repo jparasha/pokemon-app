@@ -126,6 +126,7 @@ export default function Home() {
           <NoMatch />
         )}
       </section>
+
       <Filters
         pokemonList={pokemonList}
         handleBackNavigation={handleBackNavigation}

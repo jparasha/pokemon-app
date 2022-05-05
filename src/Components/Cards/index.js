@@ -2,13 +2,13 @@ import style from "./style.module.css";
 
 export default function Card(props) {
   const { pokemon } = props;
-  console.log(pokemon);
+
   return (
-    <div className={style.card} key={pokemon.name}>
+    <div className={style.card} key={pokemon.name} title={pokemon.name}>
       <img
         loading='lazy'
         src={pokemon.sprites?.other?.["official-artwork"]?.front_default}
-        alt='pokemon'
+        alt={pokemon.name}
       />
       <div className={style.overlay}>
         <div className={style.chips}>
@@ -23,7 +23,7 @@ export default function Card(props) {
         </h3>
         <p className={style.height}>{pokemon.height} mtrs.</p>
         <button type='button' className={style.cta}>
-          Details
+          Know More
         </button>
       </div>
     </div>
