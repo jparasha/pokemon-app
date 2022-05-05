@@ -20,6 +20,13 @@
   height: 50%;
   width: 100%;
   object-fit: contain;
+  transition: all 1s;
+}
+
+.card:hover img {
+  transform: translate(-10px, -20px) rotate(-1deg) scale(1.05);
+  background: transparent;
+  transition: all 2s;
 }
 
 .card .overlay {
@@ -46,7 +53,8 @@
 }
 
 .card .overlay .chips .chip {
-  border: 1px solid #fff;
+  border: 1px solid var(--link-color);
+  color: var(--link-color);
   border-radius: 32px;
   padding: 0.3rem 0.5rem 0.5rem;
   margin-right: 0.8rem;
@@ -57,6 +65,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
+  text-transform: capitalize;
   /* padding-left: 20px; */
   /* margin-top: 1.5rem; */
 }
@@ -76,14 +85,20 @@
   border-radius: 32px;
   height: 55px;
   cursor: pointer;
-  color: var(--secondary-bg-color);
-  background: var(--font-color);
+  background: transparent;
+  color: var(--font-color);
   border-color: var(--font-color);
   text-decoration: none;
+  border: 1px solid var(--font-color);
 }
 
 .card .overlay .cta:hover {
-  color: var(--font-color);
-  background: transparent;
-  border: 1px solid var(--font-color);
+  color: var(--secondary-bg-color);
+  background: var(--font-color);
+}
+
+@media (max-width: 767px) {
+  .card:hover img {
+    transform: none;
+  }
 }

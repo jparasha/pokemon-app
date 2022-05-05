@@ -20,6 +20,7 @@
 
 .filters__navigationButtons button,
 .filters__searchForm .filters__searchForm__submit {
+  font-family: var(--font-family);
   background-color: var(--font-color);
   border-radius: 32px;
   color: var(--secondary-bg-color);
@@ -56,6 +57,7 @@
 }
 
 .filters__searchForm .filters__searchForm__input {
+  font-family: var(--font-family);
   /* width: 100%; */
   border-radius: 32px;
   border: 1px solid var(--font-color);
@@ -80,6 +82,22 @@
 
 .filters__limitDropDown__select,
 .filters__sortByDropDown__select {
+  font-family: var(--font-family);
+  background-color: var(--font-color);
+  border-radius: 12px;
+  color: var(--secondary-bg-color);
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  margin: 0.8rem;
+  min-width: 100px;
+  border: 1px solid var(--secondary-bg-color);
+  cursor: pointer;
+}
+
+.filters__limitDropDown__select option,
+.filters__sortByDropDown__select option {
+  font-family: var(--font-family);
   background-color: var(--font-color);
   border-radius: 12px;
   color: var(--secondary-bg-color);
