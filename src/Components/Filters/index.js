@@ -6,6 +6,7 @@ export default function Filters(props) {
     handleBackNavigation,
     handleForwardNavigation,
     handlePageChange,
+    handleSorting,
     pageDetails,
     noSearch,
   } = props;
@@ -63,8 +64,8 @@ export default function Filters(props) {
         <select
           id='sortBy'
           className={style.filters__sortByDropDown__select}
-          value={pageDetails.limit}
-          onChange={handlePageChange}>
+          value={pageDetails.sortBy}
+          onChange={handleSorting}>
           <option value='name'>Name</option>
           <option value='height'>Height</option>
           <option value='weight'>Weight</option>

@@ -7,15 +7,27 @@ const URL = "https://pokeapi.co/api/v2/pokemon";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const pageParams = {
     limit: searchParams.get("limit") || 20,
     offset: searchParams.get("offset") || 0,
+    sortBy: searchParams.get("sortBy") || "name",
   };
   const [pageDetails, setPageDetails] = useState(pageParams);
   const [pokemonList, setPokemonList] = useState({});
   const [pokemonDetails, setPokemonDetails] = useState([]);
   const [isLoading, setLoading] = useState(false);
+
+  const sortData = (data, sortBy) => {
+    return data.sort((a, b) => {
+      if (a[sortBy] < b[sortBy]) {
+        return -1;
+      }
+      if (a[sortBy] > b[sortBy]) {
+        return 1;
+      }
+      return 0;
+    });
+  };
 
   const getData = async (url) => {
     setLoading(true);
@@ -24,7 +36,8 @@ export default function Home() {
         setPokemonList(data);
         const { results } = data;
         getPokemonDetails(results).then((details) => {
-          setPokemonDetails(details);
+          const sortedDetails = sortData(details, pageParams.sortBy);
+          setPokemonDetails(sortedDetails);
         });
       })
       .catch((err) => {
@@ -41,18 +54,36 @@ export default function Home() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const updateParams = (prev) => {
-    const { limit = 20, offset = 0 } = pageDetails;
-    const value = { limit, offset: prev ? offset - limit : offset + limit };
+    const { limit = 20, offset = 0, sortBy = "name" } = pageDetails;
+    const value = {
+      limit,
+      offset: prev ? offset - limit : offset + limit,
+      sortBy,
+    };
     setSearchParams(value);
     setPageDetails(value);
   };
 
+  const updateQueryString = (key, value) => {
+    const { limit, offset, sortBy } = pageDetails;
+    const params = { limit, offset, sortBy };
+    params[key] = value;
+    setSearchParams(params);
+    setPageDetails(params);
+  };
+
   const handlePageChange = (e) => {
     const { value } = e.target;
-    setPageDetails({ limit: Number(value) });
-    setSearchParams({ limit: Number(value) });
+    updateQueryString("limit", value);
     const url = `${URL}?offset=${0}&limit=${Number(value)}`;
     getData(url);
+  };
+
+  const handleSorting = (e) => {
+    const { value } = e.target;
+    updateQueryString("sortBy", value);
+    const sortedDetails = sortData(pokemonDetails, value);
+    setPokemonDetails(sortedDetails);
   };
 
   const handleForwardNavigation = () => {
@@ -72,20 +103,17 @@ export default function Home() {
       getData(url);
     }
   };
-  console.log(pageDetails, pokemonDetails, "hi");
 
   return (
     <div className={style.homePage}>
-      {/*     SearchComponent */}
-
       {/* FiltersPaginationComponent */}
-      {/* https://codepen.io/codersdesign/pen/zYOgajg */}
       <Filters
         pokemonList={pokemonList}
         handleBackNavigation={handleBackNavigation}
         handleForwardNavigation={handleForwardNavigation}
         handlePageChange={handlePageChange}
         pageDetails={pageDetails}
+        handleSorting={handleSorting}
       />
 
       {/* PokemonListComponent */}
@@ -104,6 +132,7 @@ export default function Home() {
         handleForwardNavigation={handleForwardNavigation}
         handlePageChange={handlePageChange}
         pageDetails={pageDetails}
+        handleSorting={handleSorting}
         noSearch
       />
       {/* LoaderComponent */}
