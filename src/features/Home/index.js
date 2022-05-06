@@ -143,31 +143,9 @@ export default function Home() {
   const singleResult =
     pokemonDetails?.length === 0 || pokemonDetails?.length === 1;
   return (
-    <div className={style.homePage}>
-      {/* FiltersPaginationComponent */}
-      <Filters
-        pokemonList={pokemonList}
-        singleResult={singleResult}
-        handleBackNavigation={handleBackNavigation}
-        handleForwardNavigation={handleForwardNavigation}
-        handlePageChange={handlePageChange}
-        pageDetails={pageDetails}
-        handleSorting={handleSorting}
-        handleSearch={handleSearch}
-      />
-
-      {/* PokemonListComponent */}
-      <section className={style.pokemonList}>
-        {pokemonDetails?.length > 0 ? (
-          pokemonDetails.map((pokemon) => (
-            <Card key={pokemon.name} pokemon={pokemon} />
-          ))
-        ) : (
-          <NoMatch isLoading={isLoading} />
-        )}
-      </section>
-
-      {!singleResult && (
+    <>
+      <div className={style.homePage}>
+        {/* FiltersPaginationComponent */}
         <Filters
           pokemonList={pokemonList}
           singleResult={singleResult}
@@ -177,11 +155,35 @@ export default function Home() {
           pageDetails={pageDetails}
           handleSorting={handleSorting}
           handleSearch={handleSearch}
-          noSearch
         />
-      )}
-      {/* LoaderComponent */}
+
+        {/* PokemonListComponent */}
+        <section className={style.pokemonList}>
+          {pokemonDetails?.length > 0 ? (
+            pokemonDetails.map((pokemon) => (
+              <Card key={pokemon.name} pokemon={pokemon} />
+            ))
+          ) : (
+            <NoMatch isLoading={isLoading} />
+          )}
+        </section>
+
+        {!singleResult && (
+          <Filters
+            pokemonList={pokemonList}
+            singleResult={singleResult}
+            handleBackNavigation={handleBackNavigation}
+            handleForwardNavigation={handleForwardNavigation}
+            handlePageChange={handlePageChange}
+            pageDetails={pageDetails}
+            handleSorting={handleSorting}
+            handleSearch={handleSearch}
+            noSearch
+          />
+        )}
+        {/* LoaderComponent */}
+      </div>
       <Loader isLoading={isLoading} />
-    </div>
+    </>
   );
 }
