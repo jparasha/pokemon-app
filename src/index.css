@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap");
 
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+}
+
 :root {
   --font-color: #eee;
   --secondary-font-color: hsla(0, 0%, 97%, 0.7);
