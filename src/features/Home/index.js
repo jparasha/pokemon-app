@@ -80,7 +80,9 @@ export default function Home() {
       search = "",
     } = pageDetails;
     const value = {
-      offset: prev ? offset - limit : offset + limit,
+      offset: prev
+        ? Number(offset) - Number(limit)
+        : Number(offset) + Number(limit),
       limit,
       sortBy,
       search,
@@ -91,7 +93,7 @@ export default function Home() {
 
   const updateQueryString = (key, value) => {
     const { limit, offset, sortBy, search } = pageDetails;
-    const params = { limit, offset, sortBy, search };
+    const params = { offset, limit, sortBy, search };
     params[key] = value;
     setSearchParams(params);
     setPageDetails(params);
