@@ -1,6 +1,9 @@
+import { useId } from "react";
 import style from "./style.module.css";
 
 export default function Filters(props) {
+  const generatedID = useId();
+
   const {
     pokemonList,
     singleResult,
@@ -48,9 +51,9 @@ export default function Filters(props) {
         </div>
       )}
       <div className={style.filters__limitDropDown}>
-        <label htmlFor='limit'>show :</label>
+        <label htmlFor={generatedID + "_1"}>show :</label>
         <select
-          id='limit'
+          id={generatedID + "_1"}
           disabled={singleResult}
           className={style.filters__limitDropDown__select}
           value={pageDetails.limit}
@@ -61,9 +64,9 @@ export default function Filters(props) {
         </select>
       </div>
       <div className={style.filters__sortByDropDown}>
-        <label htmlFor='sortBy'>sort by :</label>
+        <label htmlFor={generatedID + "_2"}>sort by :</label>
         <select
-          id='sortBy'
+          id={generatedID + "_2"}
           disabled={singleResult}
           className={style.filters__sortByDropDown__select}
           value={pageDetails.sortBy}
