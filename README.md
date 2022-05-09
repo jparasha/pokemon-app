@@ -1,3 +1,16 @@
+# Know Pokemon App
+
+## TODO:
+
+1. Search Implementation for abilities.
+2. Unit Test Coverage 80+%.
+3. Sorting api to be researched.
+4. Implement lighthouse audit recommendations for performance (86 current).
+
+## Issues:
+
+In Case any bug noticed, feel free to create an Issue subject to community guidelines.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

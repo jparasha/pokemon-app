@@ -20,6 +20,7 @@
 
 .filters__navigationButtons button,
 .filters__searchForm .filters__searchForm__submit {
+  font-family: var(--font-family);
   background-color: var(--font-color);
   border-radius: 32px;
   color: var(--secondary-bg-color);
@@ -45,7 +46,7 @@
   cursor: not-allowed;
 }
 
-.filters__searchForm {
+.filters__searchForm form {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -56,6 +57,7 @@
 }
 
 .filters__searchForm .filters__searchForm__input {
+  font-family: var(--font-family);
   /* width: 100%; */
   border-radius: 32px;
   border: 1px solid var(--font-color);
@@ -80,6 +82,7 @@
 
 .filters__limitDropDown__select,
 .filters__sortByDropDown__select {
+  font-family: var(--font-family);
   background-color: var(--font-color);
   border-radius: 12px;
   color: var(--secondary-bg-color);
@@ -90,4 +93,69 @@
   min-width: 100px;
   border: 1px solid var(--secondary-bg-color);
   cursor: pointer;
+}
+
+.filters__limitDropDown__select option,
+.filters__sortByDropDown__select option {
+  font-family: var(--font-family);
+  background-color: var(--font-color);
+  border-radius: 12px;
+  color: var(--secondary-bg-color);
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  margin: 0.8rem;
+  min-width: 100px;
+  border: 1px solid var(--secondary-bg-color);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .filters {
+    min-width: 75vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .filters {
+    font-size: smaller;
+    flex-direction: column-reverse;
+  }
+  .filters__navigationButtons button,
+  .filters__searchForm .filters__searchForm__submit,
+  .filters__limitDropDown__select,
+  .filters__sortByDropDown__select {
+    font-size: smaller;
+  }
+  .filters__navigationButtons,
+  .filters__searchForm,
+  .filters__limitDropDown,
+  .filters__sortByDropDown {
+    width: 100%;
+    padding: 0;
+    text-align: left;
+    justify-content: space-around;
+  }
+  .filters__searchForm .filters__searchForm__input {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  .filters__navigationButtons {
+    flex-flow: row nowrap;
+  }
+  .filters__navigationButtons button {
+    width: 45%;
+  }
+  .filters__searchForm form {
+    width: 100%;
+    padding: 0.2rem 0;
+    justify-content: space-around;
+  }
+  .filters__searchForm form input {
+    width: 100%;
+  }
+  .filters__searchForm form .filters__searchForm__input {
+    margin: 0.8rem;
+    padding: 0.8rem;
+  }
 }
