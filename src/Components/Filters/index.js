@@ -35,7 +35,7 @@ export default function Filters(props) {
       </div>
       {!noSearch && (
         <div className={style.filters__searchForm}>
-          <form onSubmit={handleSearch}>
+          <form onSubmit={handleSearch} name='searchForm'>
             <input
               type='text'
               name='search'

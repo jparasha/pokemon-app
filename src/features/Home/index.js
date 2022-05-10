@@ -116,7 +116,7 @@ export default function Home() {
   const handleSearch = (e) => {
     e.preventDefault();
     const { limit, offset } = pageDetails;
-    const { value = "" } = e.target[0];
+    const { value = "" } = e.target.elements.search || {};
     let url = !value
       ? `${URL}?offset=${offset}&limit=${limit}`
       : `${URL}/${value.toLowerCase()}`;
