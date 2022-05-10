@@ -86,3 +86,23 @@ test("it should handle errors gracefully", async () => {
   const error = await screen.findByRole("alert");
   expect(error).toBeInTheDocument();
 });
+
+test("it should handle search errors gracefully", async () => {
+  server.resetHandlers(
+    rest.get("https://pokeapi.co/api/v2/pokemon/:id", (req, res, ctx) => {
+      return res(ctx.status(500));
+    })
+  );
+  render(
+    <Router>
+      <Home />
+    </Router>
+  );
+
+  const error = await screen.findAllByRole("alert");
+  const btn = await screen.findByText(/Go Home/i);
+  const errorText = await screen.findByText(/No Match Found/i);
+  expect(error).toHaveLength(1);
+  expect(errorText).toBeInTheDocument();
+  fireEvent.click(btn);
+});
