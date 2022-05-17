@@ -3,7 +3,7 @@
 ## TODO:
 
 1. Search Implementation for abilities.
-2. Unit Test Coverage 80+%.
+2. Unit Test Coverage 80+%.✅
 3. Sorting api to be researched.
 4. Implement lighthouse audit recommendations for performance (86 current).
 
